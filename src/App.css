@@ -1,0 +1,378 @@
+.home-background{
+    background-color: black;
+}
+
+.nav-item{
+ color: white;
+ text-decoration: none;
+ margin: 10px; 
+}
+
+.main-page{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px;
+    color:azure;
+    margin-left: 10px;
+}
+
+.banner{
+    height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.banner::before{
+    position: absolute;
+    left:0;
+    width: 100%;
+    height: 600px;
+    content: '';
+    background: linear-gradient(to right, black, transparent);
+}
+
+.banner-info{
+    width: 40%;
+    margin-left: 30px;
+    z-index: 1;
+    color: white;
+}
+
+.card{
+    width: 300px;
+    height: 200px;
+}
+
+.overlay{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:azure;
+    opacity: 0;
+    background: linear-gradient(to bottom, rgba(43, 41, 41, 10), rgba(43, 41, 41, 0.2));
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.card:hover .overlay{
+    opacity: 1;
+}
+
+.movie-info{
+    margin-top: 10px;
+    color:cornsilk;
+    font-weight: bold;
+    opacity: 0.6;
+    font-size: 11pt;
+}
+
+.rate{
+    color:yellow;
+    margin-left: 5px;
+}
+
+.detail-img{
+    position: absolute;
+    left: 300px;
+    width: 500px;
+    height: 620px;
+}
+
+.movie-detail{
+    padding: 30px;
+    color:azure;
+}
+
+.genre{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.genre .genre-badge{
+    margin-right: 8px;
+    font-size: 11pt;
+}
+
+.detail-title{
+    margin-bottom: 20px;
+}
+
+.popular-info{
+    margin-top: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popular-info span{
+    margin-right: 20px;
+}
+
+.adult{
+    color: #ff0000;
+    font-family: fantasy;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 11pt;
+}
+
+.bar{
+    margin-top: 20px;
+    border-top: 1px solid white;
+}
+
+.bar2{
+    border-top: 1px solid white;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.bar3{
+    border-top: 1px solid #ff0000;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.overview{
+    margin-top: 20px;
+    width: 80%;
+    font-size: 13pt;
+}
+
+.budget-info{
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.budget-info .detail-badge{
+    font-size: 10pt;
+    width: 90px;
+}
+
+.budget-info span{
+    margin-right: 5px;
+    margin-bottom: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.trailer{
+    margin-left: 10px;
+    margin-top: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    color:#ff0000;
+}
+
+.trailer-btn button{
+    color:#ff0000;
+    margin-left: -60px;
+    margin-bottom: -30px;
+    opacity: 0.8;
+    font-size: 13pt;
+}
+
+.trailer-btn button:hover{
+    background-color: white;
+    color:#ff0000;
+}
+
+.trailer span{
+    margin-right: 10px;
+}
+
+.review-btn{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+}
+
+.review-btn button{
+    margin-right: 20px;
+    padding: 10px;
+    width: 200px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.review-card{
+    margin-left: 50px;
+    border: 1px solid white;
+}
+
+.review-card .review-info{
+    color:azure;
+    padding: 20px;
+}
+
+.review-card .review-author{
+    border-bottom: 1px solid white;
+}
+
+.movie-card{
+    margin-left: 50px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: black;
+    color:azure;
+}
+
+.movie-title{
+    margin-top: 10px;
+    border-bottom: 1px solid white;
+    width: 70%;
+}
+
+.recom-movie{
+    border-radius: 10px;
+}
+
+.recom-overview{
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.trailer-title{
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    color: #ff0000;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.trailer-video{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.modal-btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    margin-right: 70px;
+}
+
+.modal-btn button{
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    width: 300px;
+}
+
+.modal-btn button:hover {
+    background-color:white;
+    color:#ff0000;
+  }
+
+.custom-modal .modal-content{
+    background-color: rgba(0, 0, 0, 0.6);;
+    color: white;
+}
+
+.movie-overview{
+    font-size: 10pt;
+}
+
+.pop-movie-card{
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.movie-image{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    flex-wrap:nowrap;
+}
+
+.movie-details{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: -60px;
+    margin-left: 50px;
+    flex-wrap: nowrap;
+}
+
+.genres .genre-badge{
+    margin-right:5px;
+    font-size: 10pt;
+}
+
+.overlay2{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:azure;
+    opacity: 0.2;
+    background: linear-gradient(to right, rgba(43, 41, 41, 1) 0%, rgba(43, 41, 41, 0.2) 50%);
+    width: 80%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.movie-image:hover .overlay2{
+    opacity: 1;
+}
+
+.backdrop-img{
+    border-radius: 10px;
+}
+
+.popular-info2{
+    margin-top: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 11pt;
+}
+
+/* dropdown */
+.btn-container {
+    position: absolute;
+    left: 280px;
+    top: 200px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn-container .dropdown{
+    margin-bottom: 20px;
+}
+
+.range-filter{
+    color:#ff0000;
+    font-size: 14pt;
+}
+
+/* pagination */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-wrapper .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pagination-wrapper .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination-wrapper .pagination li a {
+    color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+  
+  .pagination-wrapper .pagination li.active a {
+    background: linear-gradient(to right, #ff0000, yellow);
+    color: #fff;
+  }
+  
+  .pagination-wrapper .pagination li a:hover {
+    background: linear-gradient(to right, #ff0000, yellow);
+    color: #fff;
+  }
+
+  .range{
+    padding: 20px;
+    color:#ff0000;
+    font-weight: bold;
+  }
