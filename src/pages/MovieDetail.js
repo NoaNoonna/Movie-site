@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Row, Col, Badge, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { movieAction } from '../redux/actions/movieAction';
+import { movieActions } from '../redux/reducer/movieReducer';
 import Review from '../component/Review';
 import Recommend from '../component/Recommend';
 import MovieTrailer from '../component/MovieTrailer';
@@ -12,13 +12,13 @@ const MovieDetail = () => {
   const { movieDetail, movieReview, recommendations } = useSelector((state) => state.movie);
   const [ showReviews, setShowReviews ] = useState(false);
   const [ showRelatedMovies, setShowRelatedMovies ] = useState(false);
-  let {id} = useParams();
-
-  console.log("recommendations???", recommendations);
+  const id = useParams();
  
   useEffect(()=>{
-    dispatch(movieAction.getMovieDetail({id}));
- },[]);
+    console.log('엥')
+    console.log(id)
+    dispatch(movieActions.getMovieDetailRequest(id));
+ },[id]);
  
     return (
     <div className="home-background">

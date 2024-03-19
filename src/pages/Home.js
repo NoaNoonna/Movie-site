@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { movieAction } from '../redux/actions/movieAction';
+import { movieActions } from '../redux/reducer/movieReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import Banner from '../component/Banner';
 import MovieSlide from '../component/MovieSlide';
@@ -12,7 +12,7 @@ const Home = () => {
     (state) => state.movie);
 
  useEffect(()=>{
-    dispatch(movieAction.getMovies());
+    dispatch(movieActions.getMoviesRequest());
   },[]);
 
   if(loading){
@@ -20,10 +20,10 @@ const Home = () => {
   }
   return (
     <div className="home-background">
-      <Banner movie={popularMovies.results[0]} />
+    <Banner movie={popularMovies && popularMovies.results && popularMovies.results.length > 0 ? popularMovies.results[0] : null} />
 
       <div className="main-page">
-        {searchMovie.results && searchMovie.results.length > 0 && searchMovie ? (
+        {searchMovie && searchMovie.results && searchMovie.results.length > 0 && searchMovie ? (
           <>
             <h1>Search Results</h1>
             <MovieSlide movies={searchMovie} />

@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { Form, Dropdown } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { movieAction } from '../redux/actions/movieAction';
+import { movieActions } from '../redux/reducer/movieReducer';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 
 const MovieDropdown = ({movies}) => {
     const dispatch = useDispatch();
-    const [ yearRange, setYearRange ] = useState({min: 1990, max:2024 });
+    const [ yearRange, setYearRange ] = useState({min: 2010, max:2024 });
 
+    if(!movies || !movies.results){
+        return null;
+    }
     const handleYearChange = (newRange) => {
         setYearRange(newRange);
 
-        dispatch(movieAction.filterByYearRange({newRange}));
+        dispatch(movieActions.filterByYearRangeSuccess({newRange}));
     };
 
     const getPopDesc = () => {
@@ -28,7 +31,7 @@ const MovieDropdown = ({movies}) => {
         });
         console.log("Sorted Movies:", sortedMovies);
        
-        dispatch(movieAction.sortByResult({ sortedMovies }));
+        dispatch(movieActions.setSortedMovieSuccess({ sortedMovies }));
     }
 
     const getPopAsc = () => {
@@ -45,7 +48,7 @@ const MovieDropdown = ({movies}) => {
         });
         console.log("Sorted Movies:", sortedMovies);
        
-        dispatch(movieAction.sortByResult({ sortedMovies }));
+        dispatch(movieActions.setSortedMovieSuccess({ sortedMovies }));
     }
 
   return (
@@ -133,7 +136,7 @@ const MovieDropdown = ({movies}) => {
                           <div className="range">
                             <InputRange
                                     maxValue={2024}
-                                    minValue={1990}
+                                    minValue={2010}
                                     formatLabel={value => `${value}`}
                                     value={yearRange}
                                     onChange={handleYearChange}

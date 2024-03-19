@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col, Badge} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from "react-js-pagination";
-import { movieAction } from '../redux/actions/movieAction';
+import { movieActions } from '../redux/reducer/movieReducer';
 import MovieDropdown from '../component/MovieDropdown';
 
 const Movie = () => {
@@ -10,10 +10,12 @@ const Movie = () => {
   const [ activePage, setActivePage ] = useState(1);
   const dispatch = useDispatch();
 
-  console.log("popularMovies^^^^", popularMovies);
+  console.log("sortedMovies^^^^", sortedMovies);
+  console.log("newRange^^^^", newRange);
+  console.log("searchMovie^^^^", searchMovie);
 
 useEffect(()=>{
-    dispatch(movieAction.getMovies());
+    dispatch(movieActions.getMoviesRequest());
   },[]);
 
   const handlePageChange = (pageNumber) => {
@@ -21,14 +23,17 @@ useEffect(()=>{
     setActivePage(pageNumber);
   }
 
-  const searchResult = searchMovie.results;
-  const popularResult = popularMovies.results;
+  const searchResult = searchMovie?.results || [];
+  const popularResult = popularMovies?.results || [];
+
+  console.log("popularResult?????", popularResult);
   
   //filter범위 내의 영화 구하기 
-  const filteredMovies = popularResult.filter(movie => {
-    const releaseYear = parseInt(movie.release_date.slice(0,4));
-    return releaseYear >= newRange.min && releaseYear <= newRange.max;
-  })
+  const filteredMovies = newRange && newRange.min && newRange.max ? 
+    popularResult.filter(movie => {
+      const releaseYear = parseInt(movie.release_date.slice(0,4));
+      return releaseYear >= newRange.min && releaseYear <= newRange.max;
+    }) : [];
 
   console.log("filteredMovies!!!!!!!@@!!", filteredMovies);
 
@@ -36,13 +41,18 @@ useEffect(()=>{
   const moviesPerPage = 6;
   const indexOfLastMovie = activePage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-  const currentMovies = sortedMovies.length > 0 ? 
-  sortedMovies.slice(indexOfFirstMovie, indexOfLastMovie) : 
-  (searchResult && searchResult.length > 0 ? 
-      searchResult.slice(indexOfFirstMovie, indexOfLastMovie) : 
-      (filteredMovies.length > 0 ? 
-          filteredMovies.slice(indexOfFirstMovie, indexOfLastMovie) : 
-          (popularResult ? popularResult.slice(indexOfFirstMovie, indexOfLastMovie) : [])));
+
+  //sort 한 후에 filter를 하면 작동하지 않음. 해결하지 못함ㅠ
+  const currentMovies = sortedMovies.length > 0 ?
+  sortedMovies.slice(indexOfFirstMovie, indexOfLastMovie) :
+  (searchResult.length > 0 ?
+    searchResult.slice(indexOfFirstMovie, indexOfLastMovie) :
+    (filteredMovies.length > 0 ?
+      filteredMovies.slice(indexOfFirstMovie, indexOfLastMovie) :
+      (popularResult.length > 0 ?
+        popularResult.slice(indexOfFirstMovie, indexOfLastMovie) : [])));
+
+console.log("currentMovies????", currentMovies);          
 
 const totalItemsCount = sortedMovies.length > 0 ? 
   sortedMovies.length : 

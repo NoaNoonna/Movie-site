@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { movieAction } from '../redux/actions/movieAction';
+import { movieActions } from '../redux/reducer/movieReducer';
 
 const Navigation = () => {
   const[ keyword, setKeyword ] = useState('');
@@ -11,7 +11,8 @@ const Navigation = () => {
   //검색 기능
   const searchEnter = (event) => {
     event.preventDefault();
-    dispatch(movieAction.searchMovie({keyword}));
+    dispatch(movieActions.searchMovieRequest(keyword));
+    console.log("keyword?????", keyword);
   };
 
   //입력필드 삭제하면 자동으로 전체 영화 검색 
@@ -20,7 +21,7 @@ const Navigation = () => {
     setKeyword(value);
 
     if(value === ''){
-      dispatch(movieAction.searchMovie({keyword:''}));
+      dispatch(movieActions.searchMovieSuccess({keyword:''}));
     }
   };
 
